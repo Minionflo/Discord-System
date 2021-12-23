@@ -147,7 +147,7 @@ async function roles() {
     reactions_misc(msgs)
 }
 
-async function check_files() {
+function check_files() {
     if(fs.existsSync("save") != true) { fs.mkdirSync("save") }
     if(fs.existsSync("save/id") != true) { fs.writeFileSync("save/id", "0", 'utf-8') }
 }
