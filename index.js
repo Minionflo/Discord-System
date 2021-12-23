@@ -187,7 +187,7 @@ function cmd_news(msg, args) {
         .setDescription(args.join(" "))
         .setFooter(msg.author.tag, msg.author.avatarURL())
         .setTimestamp()
-    client.channels.cache.get(config_channel_news).send("<@&" + config_role_ping + ">", emb).then(p => { p.crosspost(); })
+    client.channels.cache.get(config_channel_news).send("<@&" + config_role_misc_ping + ">", emb).then(p => { p.crosspost(); })
     log.log(`${msg.author.username} posted the news: ${args.join(" ")}`)
 }
 
