@@ -156,7 +156,6 @@ async function check_files() {
 
 var cmdmap = {
     ping: cmd_ping,
-    help: cmd_help,
     news: cmd_news,
     ticket: cmd_ticket,
     close: cmd_close,
@@ -168,15 +167,6 @@ function cmd_ping(msg, args) {
     var ping = Date.now() - msg.createdTimestamp + " ms"
     msg.channel.send(ping)
     log.log(`${msg.author.username} used the ping command`)
-}
-
-function cmd_help(msg, args) {
-    if(config_channel_bot.includes(msg.channel.id) != true) { log.error(`${msg.author.tag} used the wrong channel`); return }
-    var emb = new MessageEmbed()
-        .setTitle("Help")
-        .setDescription("Help is here")
-        .setColor("#00ff00")
-    msg.channel.send(emb)
 }
 
 function cmd_news(msg, args) {
