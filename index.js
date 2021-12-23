@@ -212,8 +212,22 @@ async function cmd_ticket(msg, args) {
 
 async function cmd_close(msg, args) {
     var id = parseInt(fs.readFileSync("./save/id", 'utf-8'))
+    var perms_remove
     if(msg.channel.name <= id) {
-        msg.channel.delete()
+        msg.channel.permissionOverwrites.each(function(V, K, C) {
+            if(V.type == "member") {
+                perms_remove = V.id
+            }
+        })
+        msg.channel.overwritePermissions([{
+            id: perms_remove,
+            deny: ['VIEW_CHANNEL', 'SEND_MESSAGES', 'ATTACH_FILES', 'ADD_REACTIONS', 'READ_MESSAGE_HISTORY']
+        },
+        {
+            id: config_role_serverteam,
+            deny: ['SEND_MESSAGES', 'ATTACH_FILES', 'ADD_REACTIONS'],
+            allow: ['VIEW_CHANNEL', 'READ_MESSAGE_HISTORY']
+        }])
     }
 }
 
