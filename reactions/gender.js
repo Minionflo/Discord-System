@@ -9,11 +9,11 @@ module.exports = async function(msgs) {
     var female = "922654971449720832"
     var genderfluid = "922652447716036608"
     var genderflux = "922652447640522793"
-    var gender_questioning = "922652447745392660"
     var male = "922654971357446184"
     var non_binary = "922652447569219676"
     var pangender = "922652447774740530"
     var transgender = "922652447770542160"
+    var questioning = "927891808132952114"
 
     var gender = await msgs.filter(m => m.content.includes('__***Gender***__'))
     gender = gender.first()
@@ -26,11 +26,11 @@ module.exports = async function(msgs) {
 <:LOL:${female}> = **Female**
 <:LOL:${genderfluid}> = **Genderfluid**
 <:LOL:${genderflux}> = **Genderflux**
-<:LOL:${gender_questioning}> = **Gender Questioning**
 <:LOL:${male}> = **Male**
 <:LOL:${non_binary}> = **Non Binary**
 <:LOL:${pangender}> = **Pangender**
-<:LOL:${transgender}> = **Transgender**`)
+<:LOL:${transgender}> = **Transgender**
+<:LOL:${questioning}> = **Questioning**`)
 
 
     await gender.react(agender)
@@ -39,11 +39,11 @@ module.exports = async function(msgs) {
     await gender.react(female)
     await gender.react(genderfluid)
     await gender.react(genderflux)
-    await gender.react(gender_questioning)
     await gender.react(male)
     await gender.react(non_binary)
     await gender.react(pangender)
     await gender.react(transgender)
+    await gender.react(questioning)
 
     const gender_col = gender.createReactionCollector(filter, { dispose: true });
     gender_col.on('collect', async (r, u) => {
@@ -53,11 +53,11 @@ module.exports = async function(msgs) {
         else if(r.emoji.id == female) { await server.member(u).roles.add(await server.roles.fetch(config_role_gender_female)) ; log.log(`Role add Gender ${u.username} Female`) }
         else if(r.emoji.id == genderfluid) { await server.member(u).roles.add(await server.roles.fetch(config_role_gender_genderfluid)) ; log.log(`Role add Gender ${u.username} Genderfluid`) }
         else if(r.emoji.id == genderflux) { await server.member(u).roles.add(await server.roles.fetch(config_role_gender_genderflux)) ; log.log(`Role add Gender ${u.username} Genderflux`) }
-        else if(r.emoji.id == gender_questioning) { await server.member(u).roles.add(await server.roles.fetch(config_role_gender_gender_questioning)) ; log.log(`Role add Gender ${u.username} Gender Questioning`) }
         else if(r.emoji.id == male) { await server.member(u).roles.add(await server.roles.fetch(config_role_gender_male)) ; log.log(`Role add Gender ${u.username} Male`) }
         else if(r.emoji.id == non_binary) { await server.member(u).roles.add(await server.roles.fetch(config_role_gender_non_binary)) ; log.log(`Role add Gender ${u.username} Non Binary`) }
         else if(r.emoji.id == pangender) { await server.member(u).roles.add(await server.roles.fetch(config_role_gender_pangender)) ; log.log(`Role add Gender ${u.username} Pangender`) }
         else if(r.emoji.id == transgender) { await server.member(u).roles.add(await server.roles.fetch(config_role_gender_transgender)) ; log.log(`Role add Gender ${u.username} Transgender`) }
+        else if(r.emoji.id == questioning) { await server.member(u).roles.add(await server.roles.fetch(config_role_gender_questioning)) ; log.log(`Role add Gender ${u.username} Questioning`) }
     })
     gender_col.on('remove', async (r, u) => {
         if(r.emoji.id == agender) { await server.member(u).roles.remove(await server.roles.fetch(config_role_gender_agender)) ; log.log(`Role remove Gender ${u.username} Agender`) }
@@ -66,10 +66,10 @@ module.exports = async function(msgs) {
         else if(r.emoji.id == female) { await server.member(u).roles.remove(await server.roles.fetch(config_role_gender_female)) ; log.log(`Role remove Gender ${u.username} Female`) }
         else if(r.emoji.id == genderfluid) { await server.member(u).roles.remove(await server.roles.fetch(config_role_gender_genderfluid)) ; log.log(`Role remove Gender ${u.username} Genderfluid`) }
         else if(r.emoji.id == genderflux) { await server.member(u).roles.remove(await server.roles.fetch(config_role_gender_genderflux)) ; log.log(`Role remove Gender ${u.username} Genderflux`) }
-        else if(r.emoji.id == gender_questioning) { await server.member(u).roles.remove(await server.roles.fetch(config_role_gender_gender_questioning)) ; log.log(`Role remove Gender ${u.username} Gender Questioning`) }
         else if(r.emoji.id == male) { await server.member(u).roles.remove(await server.roles.fetch(config_role_gender_male)) ; log.log(`Role remove Gender ${u.username} Male`) }
         else if(r.emoji.id == non_binary) { await server.member(u).roles.remove(await server.roles.fetch(config_role_gender_non_binary)) ; log.log(`Role remove Gender ${u.username} Non Binary`) }
         else if(r.emoji.id == pangender) { await server.member(u).roles.remove(await server.roles.fetch(config_role_gender_pangender)) ; log.log(`Role remove Gender ${u.username} Pangender`) }
         else if(r.emoji.id == transgender) { await server.member(u).roles.remove(await server.roles.fetch(config_role_gender_transgender)) ; log.log(`Role remove Gender ${u.username} Transgender`) }
+        else if(r.emoji.id == questioning) { await server.member(u).roles.remove(await server.roles.fetch(config_role_gender_questioning)) ; log.log(`Role remove Gender ${u.username} Questioning`) }
     })
 };

@@ -13,24 +13,21 @@ module.exports = async function(msgs) {
     var omnisexual = "922637606808858644"
     var pansexual = "922637606813065216"
     var polysexual = "922637606825635911"
-    var questioning = "927891808132952114"
 
     var sexual = await msgs.filter(m => m.content.includes('__***Sexuality***__'))
     sexual = sexual.first()
     if (sexual == undefined || sexual.size == 0) {sexual = await client.channels.cache.get(config_channel_roles).send(`__***Sexuality***__`)}
     sexual.edit(`__***Sexuality***__
 
-<:LOL:${asexual}> = **Asexual**
-<:LOL:${bisexual}> = **Bisexual**
-<:LOL:${demisexual}> = **Demisexual**
-<:LOL:${gay}> = **Gay**
+<:LOL:${asexual}> = **Aromantic**
+<:LOL:${bisexual}> = **Biromantic**
+<:LOL:${demisexual}> = **Demiromantic**
 <:LOL:${greysexual}> = **Greysexual**
+<:LOL:${gay}> = **Homoromantic**
 <:LOL:${heterosexual}> = **Heterosexual**
-<:LOL:${lesbian}> = **Lesbian**
 <:LOL:${omnisexual}> = **Omnisexual**
 <:LOL:${pansexual}> = **Pansexual**
-<:LOL:${polysexual}> = **Polysexual**
-<:LOL:${questioning}> = **Questioning**`)
+<:LOL:${polysexual}> = **Polysexual**`)
 
 
     await sexual.react(asexual)
@@ -43,7 +40,6 @@ module.exports = async function(msgs) {
     await sexual.react(omnisexual)
     await sexual.react(pansexual)
     await sexual.react(polysexual)
-    await sexual.react(questioning)
 
     const sexual_col = sexual.createReactionCollector(filter, { dispose: true });
     sexual_col.on('collect', async (r, u) => {
@@ -57,7 +53,6 @@ module.exports = async function(msgs) {
         else if(r.emoji.id == omnisexual) { await server.member(u).roles.add(await server.roles.fetch(config_role_sexual_omnisexual)) ; log.log(`Role add sexual ${u.username} omnisexual`) }
         else if(r.emoji.id == pansexual) { await server.member(u).roles.add(await server.roles.fetch(config_role_sexual_pansexual)) ; log.log(`Role add sexual ${u.username} pansexual`) }
         else if(r.emoji.id == polysexual) { await server.member(u).roles.add(await server.roles.fetch(config_role_sexual_polysexual)) ; log.log(`Role add sexual ${u.username} polysexual`) }
-        else if(r.emoji.id == questioning) { await server.member(u).roles.add(await server.roles.fetch(config_role_sexual_questioning)) ; log.log(`Role add sexual ${u.username} questioning`) }
     })
     sexual_col.on('remove', async (r, u) => {
         if(r.emoji.id == asexual) { await server.member(u).roles.remove(await server.roles.fetch(config_role_sexual_asexual)) ; log.log(`Role remove sexual ${u.username} asexual`) }
@@ -70,7 +65,5 @@ module.exports = async function(msgs) {
         else if(r.emoji.id == omnisexual) { await server.member(u).roles.remove(await server.roles.fetch(config_role_sexual_omnisexual)) ; log.log(`Role remove sexual ${u.username} omnisexual`) }
         else if(r.emoji.id == pansexual) { await server.member(u).roles.remove(await server.roles.fetch(config_role_sexual_pansexual)) ; log.log(`Role remove sexual ${u.username} pansexual`) }
         else if(r.emoji.id == polysexual) { await server.member(u).roles.remove(await server.roles.fetch(config_role_sexual_polysexual)) ; log.log(`Role remove sexual ${u.username} polysexual`) }
-        else if(r.emoji.id == questioning) { await server.member(u).roles.remove(await server.roles.fetch(config_role_sexual_questioning)) ; log.log(`Role add sexual ${u.username} questioning`) }
-        else console.log(r.emoji.id)
     })
 };
