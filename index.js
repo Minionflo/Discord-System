@@ -111,6 +111,7 @@ async function rules() {
 **7:** No offensive names
 **8:** No Racisim
 **9:** No NSFW exect in NSFW channels
+**10:** Use english
 
 Please set your roles in the ${client.channels.cache.get(config_channel_roles).toString()} channel.
 
