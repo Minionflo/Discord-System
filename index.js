@@ -4,6 +4,7 @@ const fs               = require('fs')
 const reactions_console     = require('./reactions/console.js')
 const reactions_gender     = require('./reactions/gender.js')
 const reactions_misc     = require('./reactions/misc.js')
+const reactions_missing     = require('./reactions/missing.js')
 const reactions_pc     = require('./reactions/pc.js')
 const reactions_phone     = require('./reactions/phone.js')
 const reactions_sexuality     = require('./reactions/sexuality.js')
@@ -30,6 +31,7 @@ global.config_role_serverteam = "564849684728905737"
 global.config_role_gender_agender = "922613619471040574"
 global.config_role_gender_androgynous = "922630946870669375"
 global.config_role_gender_bigender = "922630006029578240"
+global.config_role_gender_demi = "928604094971650070"
 global.config_role_gender_female = "922505106916798484"
 global.config_role_gender_genderfluid = "922630054008213535"
 global.config_role_gender_genderflux = "922630057036513300"
@@ -148,6 +150,7 @@ async function roles() {
     reactions_phone(msgs)
     reactions_console(msgs)
     reactions_misc(msgs)
+    reactions_missing(msgs)
 }
 
 function check_files() {

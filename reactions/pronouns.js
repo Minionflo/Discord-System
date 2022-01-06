@@ -16,9 +16,7 @@ module.exports = async function(msgs) {
 <:LOL:${he}> = **he/him**
 <:LOL:${she}> = **she/her**
 <:LOL:${they}> = **they/them**
-<:LOL:${askMe}> = **Ask me**
-
-For other please open a ticket so we can add it`)
+<:LOL:${askMe}> = **Ask me**`)
 
 
     await pronouns.react(he)

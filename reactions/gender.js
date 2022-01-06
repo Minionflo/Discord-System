@@ -6,6 +6,7 @@ module.exports = async function(msgs) {
     var agender = "922652447653101588"
     var androgynous = "922652447586017280"
     var bigender = "922652447615365182"
+    var demi = "928603085687881728"
     var female = "922654971449720832"
     var genderfluid = "922652447716036608"
     var genderflux = "922652447640522793"
@@ -23,10 +24,11 @@ module.exports = async function(msgs) {
 <:LOL:${agender}> = **Agender**
 <:LOL:${androgynous}> = **Androgynous**
 <:LOL:${bigender}> = **Bigender**
-<:LOL:${female}> = **Female**
+<:LOL:${demi}> = **Demi***
+<:LOL:${female}> = **Female/Girl**
 <:LOL:${genderfluid}> = **Genderfluid**
 <:LOL:${genderflux}> = **Genderflux**
-<:LOL:${male}> = **Male**
+<:LOL:${male}> = **Male/Boy**
 <:LOL:${non_binary}> = **Non Binary**
 <:LOL:${pangender}> = **Pangender**
 <:LOL:${transgender}> = **Transgender**
@@ -36,6 +38,7 @@ module.exports = async function(msgs) {
     await gender.react(agender)
     await gender.react(androgynous)
     await gender.react(bigender)
+    await gender.react(demi)
     await gender.react(female)
     await gender.react(genderfluid)
     await gender.react(genderflux)
@@ -50,6 +53,7 @@ module.exports = async function(msgs) {
         if(r.emoji.id == agender) { await server.member(u).roles.add(await server.roles.fetch(config_role_gender_agender)) ; log.log(`Role add Gender ${u.username} Agender`) }
         else if(r.emoji.id == androgynous) { await server.member(u).roles.add(await server.roles.fetch(config_role_gender_androgynous)) ; log.log(`Role add Gender ${u.username} Androgynous`) }
         else if(r.emoji.id == bigender) { await server.member(u).roles.add(await server.roles.fetch(config_role_gender_bigender)) ; log.log(`Role add Gender ${u.username} Bigender`) }
+        else if(r.emoji.id == demi) { await server.member(u).roles.add(await server.roles.fetch(config_role_gender_demi)) ; log.log(`Role add Gender ${u.username} Demi*`) }
         else if(r.emoji.id == female) { await server.member(u).roles.add(await server.roles.fetch(config_role_gender_female)) ; log.log(`Role add Gender ${u.username} Female`) }
         else if(r.emoji.id == genderfluid) { await server.member(u).roles.add(await server.roles.fetch(config_role_gender_genderfluid)) ; log.log(`Role add Gender ${u.username} Genderfluid`) }
         else if(r.emoji.id == genderflux) { await server.member(u).roles.add(await server.roles.fetch(config_role_gender_genderflux)) ; log.log(`Role add Gender ${u.username} Genderflux`) }
@@ -63,6 +67,7 @@ module.exports = async function(msgs) {
         if(r.emoji.id == agender) { await server.member(u).roles.remove(await server.roles.fetch(config_role_gender_agender)) ; log.log(`Role remove Gender ${u.username} Agender`) }
         else if(r.emoji.id == androgynous) { await server.member(u).roles.remove(await server.roles.fetch(config_role_gender_androgynous)) ; log.log(`Role remove Gender ${u.username} Androgynous`) }
         else if(r.emoji.id == bigender) { await server.member(u).roles.remove(await server.roles.fetch(config_role_gender_bigender)) ; log.log(`Role remove Gender ${u.username} Bigender`) }
+        else if(r.emoji.id == demi) { await server.member(u).roles.remove(await server.roles.fetch(config_role_gender_demi)) ; log.log(`Role remove Gender ${u.username} Demi*`) }
         else if(r.emoji.id == female) { await server.member(u).roles.remove(await server.roles.fetch(config_role_gender_female)) ; log.log(`Role remove Gender ${u.username} Female`) }
         else if(r.emoji.id == genderfluid) { await server.member(u).roles.remove(await server.roles.fetch(config_role_gender_genderfluid)) ; log.log(`Role remove Gender ${u.username} Genderfluid`) }
         else if(r.emoji.id == genderflux) { await server.member(u).roles.remove(await server.roles.fetch(config_role_gender_genderflux)) ; log.log(`Role remove Gender ${u.username} Genderflux`) }
