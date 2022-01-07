@@ -27,6 +27,7 @@ global.config_channel_news = "609677269366997014"
 global.config_channel_teambotspam = "565255378745425921"
 global.config_channel_roles = "572044624500097045"
 global.config_channel_giveaway = "572026482680135690"
+global.config_channel_dms = "928818990296481872"
 global.config_role_player = "578328645014388756"
 global.config_role_serverteam = "564849684728905737"
 global.config_role_gender_agender = "922613619471040574"
@@ -169,7 +170,7 @@ var cmdmap = {
     close: cmd_close,
     clear: cmd_clear,
     g_start: cmd_g_start,
-    random: cmd_random
+    reply: cmd_reply
 }
 
 function cmd_ping(msg, args) {
@@ -244,12 +245,14 @@ async function cmd_g_start(msg, args) {
     g.start(msg, args)
 }
 
-async function cmd_random(msg, args) {
-    function getRandomInt(max) { return Math.floor(Math.random() * max); }
-    var random = getRandomInt(args)
-    msg.reply(random)
+async function cmd_reply(msg, args) {
+    if(config_channel_dms != msg.channel.id) { log.error(`${msg.author.tag} used the wrong channel`); return }
+    var argss = args
+    var user = argss[0]
+    argss.shift()
+    var dm_channel = client.users.cache.get(user)
+    dm_channel.send(argss.join(" "))
 }
-
 
 client.on('message', (msg) => {
         if(msg.author.id == client.user.id) {return false}
@@ -261,6 +264,13 @@ client.on('message', (msg) => {
                     console.log("ERROR")
                 }
             }
+        } else if(msg.channel.type == "dm") {
+            var emb = new MessageEmbed()
+                .setTitle(msg.content)
+                .setTimestamp()
+                .setAuthor(msg.author.tag, msg.author.avatarURL())
+                .setFooter(msg.author.id)
+            client.channels.cache.get(config_channel_dms).send(emb)
         }
 })
 
