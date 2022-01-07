@@ -10,6 +10,7 @@ const reactions_phone     = require('./reactions/phone.js')
 const reactions_sexuality     = require('./reactions/sexuality.js')
 const reactions_pronouns      = require('./reactions/pronouns.js')
 const log                     = require('./log.js')
+const g = require("./giveaway.js")
 
 global.client = new Discord.Client()
 
@@ -25,7 +26,7 @@ global.config_channel_rules = "576459385295863839"
 global.config_channel_news = "609677269366997014"
 global.config_channel_teambotspam = "565255378745425921"
 global.config_channel_roles = "572044624500097045"
-global.config_channel_giveaways = "572026482680135690"
+global.config_channel_giveaway = "572026482680135690"
 global.config_role_player = "578328645014388756"
 global.config_role_serverteam = "564849684728905737"
 global.config_role_gender_agender = "922613619471040574"
@@ -63,7 +64,8 @@ global.config_role_phone_ios = "572895837273718810"
 global.config_role_console_nintendo_switch = "572895683494019072"
 global.config_role_console_ps4 = "572895452375285761"
 global.config_role_console_xbox_one = "572895762103533592"
-global.config_role_misc_ping = "662318067874791439"
+global.config_role_misc_news_ping = "662318067874791439"
+global.config_role_misc_giveaways_ping = "928770038830338089"
 global.config_server = "526379888307863552"
 
 if(process.argv.slice(2) == "test") {
@@ -165,7 +167,9 @@ var cmdmap = {
     news: cmd_news,
     ticket: cmd_ticket,
     close: cmd_close,
-    clear: cmd_clear
+    clear: cmd_clear,
+    g_start: cmd_g_start,
+    random: cmd_random
 }
 
 function cmd_ping(msg, args) {
@@ -181,9 +185,8 @@ function cmd_news(msg, args) {
         .setTitle('News')
         .setColor('FAA81A')
         .setDescription(args.join(" "))
-        .setFooter(msg.author.tag, msg.author.avatarURL())
         .setTimestamp()
-    client.channels.cache.get(config_channel_news).send("<@&" + config_role_misc_ping + ">", emb).then(p => { p.crosspost(); })
+    client.channels.cache.get(config_channel_news).send("<@&" + config_role_misc_news_ping + ">", emb).then(p => { p.crosspost(); })
     log.log(`${msg.author.username} posted the news: ${args.join(" ")}`)
 }
 
@@ -234,6 +237,17 @@ async function cmd_clear(msg, args) {
             log.error(err)
         })
     log.log(`${msg.author.username} cleared ${args[0]} messages in ${msg.channel.toString()}`)
+}
+
+async function cmd_g_start(msg, args) {
+    if(config_channel_teambotspam != msg.channel.id) { log.error(`${msg.author.tag} used the wrong channel`); return }
+    g.start(msg, args)
+}
+
+async function cmd_random(msg, args) {
+    function getRandomInt(max) { return Math.floor(Math.random() * max); }
+    var random = getRandomInt(args)
+    msg.reply(random)
 }
 
 
