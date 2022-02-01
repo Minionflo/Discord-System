@@ -43,27 +43,27 @@ module.exports = async function(msgs) {
 
     const sexual_col = sexual.createReactionCollector(filter, { dispose: true });
     sexual_col.on('collect', async (r, u) => {
-        if(r.emoji.id == asexual) { await server.member(u).roles.add(await server.roles.fetch(config_role_sexual_asexual)) ; log.log(`Role add sexual ${u.username} asexual`) }
-        else if(r.emoji.id == bisexual) { await server.member(u).roles.add(await server.roles.fetch(config_role_sexual_bisexual)) ; log.log(`Role add sexual ${u.username} bisexual`) }
-        else if(r.emoji.id == demisexual) { await server.member(u).roles.add(await server.roles.fetch(config_role_sexual_demisexual)) ; log.log(`Role add sexual ${u.username} demisexual`) }
-        else if(r.emoji.id == gay) { await server.member(u).roles.add(await server.roles.fetch(config_role_sexual_gay)) ; log.log(`Role add sexual ${u.username} gay`) }
-        else if(r.emoji.id == greysexual) { await server.member(u).roles.add(await server.roles.fetch(config_role_sexual_greysexual)) ; log.log(`Role add sexual ${u.username} greysexual`) }
-        else if(r.emoji.id == heterosexual) { await server.member(u).roles.add(await server.roles.fetch(config_role_sexual_heterosexual)) ; log.log(`Role add sexual ${u.username} heterosexual`) }
-        else if(r.emoji.id == lesbian) { await server.member(u).roles.add(await server.roles.fetch(config_role_sexual_lesbian)) ; log.log(`Role add sexual ${u.username} sexual Questioning`) }
-        else if(r.emoji.id == omnisexual) { await server.member(u).roles.add(await server.roles.fetch(config_role_sexual_omnisexual)) ; log.log(`Role add sexual ${u.username} omnisexual`) }
-        else if(r.emoji.id == pansexual) { await server.member(u).roles.add(await server.roles.fetch(config_role_sexual_pansexual)) ; log.log(`Role add sexual ${u.username} pansexual`) }
-        else if(r.emoji.id == polysexual) { await server.member(u).roles.add(await server.roles.fetch(config_role_sexual_polysexual)) ; log.log(`Role add sexual ${u.username} polysexual`) }
+        if(r.emoji.name == asexual) { await server.member(u).roles.add(await server.roles.fetch(config_role_sexual_asexual)) ; log.log(`Role add sexual ${u.username} asexual`) }
+        else if(r.emoji.name == bisexual) { await server.member(u).roles.add(await server.roles.fetch(config_role_sexual_bisexual)) ; log.log(`Role add sexual ${u.username} bisexual`) }
+        else if(r.emoji.name == demisexual) { await server.member(u).roles.add(await server.roles.fetch(config_role_sexual_demisexual)) ; log.log(`Role add sexual ${u.username} demisexual`) }
+        else if(r.emoji.name == gay) { await server.member(u).roles.add(await server.roles.fetch(config_role_sexual_gay)) ; log.log(`Role add sexual ${u.username} gay`) }
+        else if(r.emoji.name == greysexual) { await server.member(u).roles.add(await server.roles.fetch(config_role_sexual_greysexual)) ; log.log(`Role add sexual ${u.username} greysexual`) }
+        else if(r.emoji.name == heterosexual) { await server.member(u).roles.add(await server.roles.fetch(config_role_sexual_heterosexual)) ; log.log(`Role add sexual ${u.username} heterosexual`) }
+        else if(r.emoji.name == lesbian) { await server.member(u).roles.add(await server.roles.fetch(config_role_sexual_lesbian)) ; log.log(`Role add sexual ${u.username} sexual Questioning`) }
+        else if(r.emoji.name == omnisexual) { await server.member(u).roles.add(await server.roles.fetch(config_role_sexual_omnisexual)) ; log.log(`Role add sexual ${u.username} omnisexual`) }
+        else if(r.emoji.name == pansexual) { await server.member(u).roles.add(await server.roles.fetch(config_role_sexual_pansexual)) ; log.log(`Role add sexual ${u.username} pansexual`) }
+        else if(r.emoji.name == polysexual) { await server.member(u).roles.add(await server.roles.fetch(config_role_sexual_polysexual)) ; log.log(`Role add sexual ${u.username} polysexual`) }
     })
     sexual_col.on('remove', async (r, u) => {
-        if(r.emoji.id == asexual) { await server.member(u).roles.remove(await server.roles.fetch(config_role_sexual_asexual)) ; log.log(`Role remove sexual ${u.username} asexual`) }
-        else if(r.emoji.id == bisexual) { await server.member(u).roles.remove(await server.roles.fetch(config_role_sexual_bisexual)) ; log.log(`Role remove sexual ${u.username} bisexual`) }
-        else if(r.emoji.id == demisexual) { await server.member(u).roles.remove(await server.roles.fetch(config_role_sexual_demisexual)) ; log.log(`Role remove sexual ${u.username} demisexual`) }
-        else if(r.emoji.id == gay) { await server.member(u).roles.remove(await server.roles.fetch(config_role_sexual_gay)) ; log.log(`Role remove sexual ${u.username} gay`) }
-        else if(r.emoji.id == greysexual) { await server.member(u).roles.remove(await server.roles.fetch(config_role_sexual_greysexual)) ; log.log(`Role remove sexual ${u.username} greysexual`) }
-        else if(r.emoji.id == heterosexual) { await server.member(u).roles.remove(await server.roles.fetch(config_role_sexual_heterosexual)) ; log.log(`Role remove sexual ${u.username} heterosexual`) }
-        else if(r.emoji.id == lesbian) { await server.member(u).roles.remove(await server.roles.fetch(config_role_sexual_lesbian)) ; log.log(`Role remove sexual ${u.username} sexual Questioning`) }
-        else if(r.emoji.id == omnisexual) { await server.member(u).roles.remove(await server.roles.fetch(config_role_sexual_omnisexual)) ; log.log(`Role remove sexual ${u.username} omnisexual`) }
-        else if(r.emoji.id == pansexual) { await server.member(u).roles.remove(await server.roles.fetch(config_role_sexual_pansexual)) ; log.log(`Role remove sexual ${u.username} pansexual`) }
-        else if(r.emoji.id == polysexual) { await server.member(u).roles.remove(await server.roles.fetch(config_role_sexual_polysexual)) ; log.log(`Role remove sexual ${u.username} polysexual`) }
+        if(r.emoji.name == asexual) { await server.member(u).roles.remove(await server.roles.fetch(config_role_sexual_asexual)) ; log.log(`Role remove sexual ${u.username} asexual`) }
+        else if(r.emoji.name == bisexual) { await server.member(u).roles.remove(await server.roles.fetch(config_role_sexual_bisexual)) ; log.log(`Role remove sexual ${u.username} bisexual`) }
+        else if(r.emoji.name == demisexual) { await server.member(u).roles.remove(await server.roles.fetch(config_role_sexual_demisexual)) ; log.log(`Role remove sexual ${u.username} demisexual`) }
+        else if(r.emoji.name == gay) { await server.member(u).roles.remove(await server.roles.fetch(config_role_sexual_gay)) ; log.log(`Role remove sexual ${u.username} gay`) }
+        else if(r.emoji.name == greysexual) { await server.member(u).roles.remove(await server.roles.fetch(config_role_sexual_greysexual)) ; log.log(`Role remove sexual ${u.username} greysexual`) }
+        else if(r.emoji.name == heterosexual) { await server.member(u).roles.remove(await server.roles.fetch(config_role_sexual_heterosexual)) ; log.log(`Role remove sexual ${u.username} heterosexual`) }
+        else if(r.emoji.name == lesbian) { await server.member(u).roles.remove(await server.roles.fetch(config_role_sexual_lesbian)) ; log.log(`Role remove sexual ${u.username} sexual Questioning`) }
+        else if(r.emoji.name == omnisexual) { await server.member(u).roles.remove(await server.roles.fetch(config_role_sexual_omnisexual)) ; log.log(`Role remove sexual ${u.username} omnisexual`) }
+        else if(r.emoji.name == pansexual) { await server.member(u).roles.remove(await server.roles.fetch(config_role_sexual_pansexual)) ; log.log(`Role remove sexual ${u.username} pansexual`) }
+        else if(r.emoji.name == polysexual) { await server.member(u).roles.remove(await server.roles.fetch(config_role_sexual_polysexual)) ; log.log(`Role remove sexual ${u.username} polysexual`) }
     })
 };
