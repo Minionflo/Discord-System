@@ -182,8 +182,8 @@ async function roles() {
     var msgs = await client.channels.cache.get(config_channel_roles).messages.fetch()
     
     reactions_gender(msgs)
-    reactions_sexuality(msgs)
     reactions_pronouns(msgs)
+    reactions_sexuality(msgs)
     reactions_pc(msgs)
     reactions_phone(msgs)
     reactions_console(msgs)
