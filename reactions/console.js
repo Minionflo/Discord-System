@@ -10,8 +10,8 @@ module.exports = async function(msgs) {
     console.edit(`__***Console***__
 
 ${config_emoji_a} = **Nintendo Switch**
-${config_emoji_b} = **PlayStation 4**
-${config_emoji_c} = **Xbox One**`)
+${config_emoji_b} = **PlayStation**
+${config_emoji_c} = **Xbox**`)
 
 
     await console.react(config_emoji_a)
